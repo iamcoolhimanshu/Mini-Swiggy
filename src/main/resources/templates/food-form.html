@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add / Update Food | Admin Panel</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            margin: 0;
+            background: #fafafa;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            width: 50%;
+            margin: 40px auto;
+            background: #fff;
+            padding: 35px 45px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #333;
+        }
+
+        input, textarea {
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #aaa;
+            font-size: 15px;
+            margin-bottom: 18px;
+            width: 100%;
+            resize: none;
+        }
+
+        textarea {
+            height: 120px;
+        }
+
+        .btn {
+            background: #ff4c4c;
+            color: white;
+            padding: 14px 16px;
+            font-size: 18px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: .3s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #e00000;
+            transform: scale(1.03);
+        }
+
+        .preview-img {
+            width: 160px;
+            border-radius: 15px;
+            margin-top: 10px;
+            display: block;
+        }
+    </style>
+
+</head>
+<body>
+
+<div th:replace="~{header :: header}"></div>
+
+<div class="container">
+    <h2>Add / Update Food 🍜</h2>
+
+    <form method="post" enctype="multipart/form-data" th:action="@{'/food/add'}">
+
+        <label>Name</label>
+        <input type="text" name="name" placeholder="Enter food name" th:value="${food.name}">
+
+        <label>Description</label>
+        <textarea name="description" placeholder="Short description" th:text="${food.description}"></textarea>
+
+        <label>Price (₹)</label>
+        <input type="number" name="price" placeholder="Enter price" th:value="${food.price}">
+
+        <label>Upload Image</label>
+        <input type="file" name="image">
+
+        <!-- Show Image Preview if editing -->
+        <img th:if="${food.imageUrl != null}"
+             th:src="${food.imageUrl}"
+             class="preview-img">
+
+        <button class="btn">Save</button>
+    </form>
+</div>
+
+</body>
+</html>

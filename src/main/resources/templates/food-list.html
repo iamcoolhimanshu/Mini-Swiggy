@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Food Items | Foodie App</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        body {
+            margin: 0;
+            background: #fafafa;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            width: 90%;
+            margin: 30px auto;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            background: #ff4c4c;
+            color: white;
+            padding: 10px 22px;
+            font-size: 15px;
+            border: none;
+            text-decoration: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .btn:hover {
+            background: #e00000;
+            transform: scale(1.05);
+        }
+
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 18px;
+            border-radius: 16px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: .3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .food-img {
+            width: 100%;
+            height: 190px;
+            border-radius: 14px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            margin: 8px 0 4px 0;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        p {
+            margin: 4px 0;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .price {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #ff4c4c;
+        }
+
+        .actions {
+            margin-top: 18px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+
+<div th:replace="~{header :: header}"></div>
+
+<div class="container">
+
+    <h2>Available Food Items 🍔</h2>
+
+    <div style="text-align:center;">
+        <a class="btn" href="/food/add">+ Add New Food</a>
+    </div>
+
+    <div th:if="${#lists.isEmpty(foods)}" style="text-align:center;margin-top:40px;">
+        <p style="font-size:18px;color:#777;">No food items available.</p>
+    </div>
+
+    <div class="food-grid">
+        <div th:each="food : ${foods}" class="card">
+
+            <img class="food-img" th:src="${food.imageUrl}" alt="Food Image">
+
+            <h3 th:text="${food.name}"></h3>
+            <p th:text="${food.description}"></p>
+
+            <div class="price">₹ <span th:text="${food.price}"></span></div>
+
+            <div class="actions">
+                <a class="btn" th:href="@{'/food/edit/' + ${food.id}}">Edit</a>
+                <a class="btn" th:href="@{'/food/delete/' + ${food.id}}">Delete</a>
+
+                <!-- FIXED ADD TO CART URL -->
+                <a class="btn"
+                   th:href="@{'/cart/add?userId=' + ${userId} + '&foodId=' + ${food.id}}">
+                    Add to Cart
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

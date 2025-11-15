@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Foodie Login</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .bg {
+            background: url("https://source.unsplash.com/1600x900/?food,restaurant") no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-box {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px 45px;
+            border-radius: 18px;
+            width: 380px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .login-box h2 {
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .login-box p {
+            margin: 0 0 25px 0;
+            font-size: 14px;
+            color: #444;
+        }
+
+        .input-group {
+            text-align: left;
+            margin-bottom: 18px;
+        }
+
+        .input-group label {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #aaa;
+            margin-top: 6px;
+            font-size: 15px;
+        }
+
+        .btn {
+            width: 100%;
+            background: #ff4c4c;
+            color: #fff;
+            border: none;
+            padding: 14px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: .3s ease;
+        }
+
+        .btn:hover {
+            background: #e00000;
+        }
+
+        .bottom-text {
+            margin-top: 15px;
+        }
+
+        .bottom-text a {
+            text-decoration: none;
+            color: #ff4c4c;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg">
+    <div class="login-box">
+        <h2>Welcome Back 🍔</h2>
+        <p>Order your favorite food anytime</p>
+
+        <form method="post" action="/login">
+            <div class="input-group">
+                <label>Email</label>
+                <input type="text" name="username" placeholder="Enter your email" required>
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Enter password" required>
+            </div>
+
+            <button class="btn">Login</button>
+        </form>
+
+        <div class="bottom-text">
+            <p>Don't have an account? <a href="/register">Create Account</a></p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

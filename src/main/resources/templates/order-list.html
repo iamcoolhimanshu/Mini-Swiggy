@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Orders | Foodie App</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            margin: 0;
+            background: #f6f6f6;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: 40px auto;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 20px 25px;
+            margin-bottom: 18px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+            border-left: 6px solid #ff4c4c;
+            transition: transform 0.25s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        .card p {
+            font-size: 15px;
+            margin: 6px 0;
+        }
+
+        .card strong {
+            color: #333;
+        }
+
+        p.empty {
+            text-align: center;
+            font-size: 17px;
+            padding: 40px 0;
+            color: #666;
+        }
+
+        /* Header placeholder styling (only if needed) */
+        header {
+            background: #ff4c4c;
+            padding: 18px 30px;
+            color: #fff;
+            font-size: 22px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<div th:replace="~{header :: header}"></div>
+
+<div class="container">
+
+    <h2>My Orders</h2>
+
+    <div th:if="${#lists.isEmpty(orders)}">
+        <p class="empty">No orders placed yet.</p>
+    </div>
+
+    <div th:each="order: ${orders}" class="card">
+        <p><strong>Order ID:</strong> <span th:text="${order.id}"></span></p>
+        <p><strong>Items:</strong> <span th:text="${order.items}"></span></p>
+        <p><strong>Total:</strong> ₹ <span th:text="${order.totalAmount}"></span></p>
+        <p><strong>Status:</strong> <span th:text="${order.status}"></span></p>
+    </div>
+
+</div>
+
+</body>
+</html>

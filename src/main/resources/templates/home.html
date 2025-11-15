@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Foodie App | Home</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #f8f8f8;
+        }
+
+        .hero {
+            background: url("https://source.unsplash.com/1600x900/?food,burger,pizza") no-repeat center center/cover;
+            height: 92vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Dark overlay for readability */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.55);
+        }
+
+        .content {
+            position: relative;
+            max-width: 650px;
+            padding: 20px;
+            z-index: 2;
+        }
+
+        .content h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background: #ff4c4c;
+            color: white;
+            padding: 16px 36px;
+            font-size: 18px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: #e00000;
+            transform: scale(1.05);
+        }
+
+        /* Subsection styling */
+        .features {
+            width: 80%;
+            margin: 50px auto;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .feature-box {
+            background: white;
+            padding: 25px;
+            width: 28%;
+            border-radius: 16px;
+            box-shadow: 0 8px 22px rgba(0,0,0,0.1);
+            transition: transform 0.25s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-box h3 {
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .feature-box p {
+            font-size: 15px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div th:replace="~{header :: header}"></div>
+
+<div class="hero">
+    <div class="content">
+        <h1>Order Your Favorite Food Instantly 🍕</h1>
+        <p>Fresh, fast & delicious — delivered straight to your door.</p>
+        <a class="btn" href="/food/list">Explore Foods</a>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="features">
+    <div class="feature-box">
+        <h3>🔥 Hot & Fresh</h3>
+        <p>Enjoy top quality food from trusted restaurants.</p>
+    </div>
+
+    <div class="feature-box">
+        <h3>⚡ Fast Delivery</h3>
+        <p>Your food arrives hot, faster than you expect.</p>
+    </div>
+
+    <div class="feature-box">
+        <h3>💳 Easy Payments</h3>
+        <p>Secure online payment and cash on delivery options.</p>
+    </div>
+</div>
+
+</body>
+</html>
