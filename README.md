@@ -1,5 +1,4 @@
-<img width="776" height="537" alt="Screenshot 2025-11-15 232506" src="https://github.com/user-attachments/assets/7308f7bf-c3c1-4346-b28f-caf9367f1ce2" /><img width="1249" height="772" alt="Screenshot 2025-11-15 194818" src="https://github.com/user-attachments/assets/313ee928-f48c-441c-907b-053c84073259" />
-
+<img width="1249" height="772" alt="Screenshot 2025-11-15 194818" src="https://github.com/user-attachments/assets/08a7bf01-b2be-4bb5-b1ad-161a0df69c8e" />
 
 ---
 
